@@ -1,7 +1,6 @@
-<h1> All clothings <%= link_to 'Add a new clothing', new_clothing_path, class: "btn btn-primary" %> </h1>
-  <br>
-  <div class="row">
-  <img src="~/code/aearamos/buybuybaby/app/assets/images/boy_clothing.jpeg" alt="Boy clothing" style="width:304px;height:228px;">
-  </div>
+
+<div class="container">
+  <h1> All clothings <%= link_to "Add a new clothing", new_clothing_path, class: 'btn btn-primary' %> </h1>
+  <%= render partial: 'clothings' %>
 </div>
 
