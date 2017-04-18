@@ -22,22 +22,32 @@
     <!-- Text link -->
     <a href="" class="navbar-wagon-item navbar-wagon-link">ALL</a>
 
+    <% if !current_user %>
+        <%= link_to "Login",  new_user_session_path %>
+    <% else%>
+    <%end%>
     <!-- Notification link-->
     <a href="" class="navbar-wagon-item navbar-wagon-link">
       <div class="badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
+      <% if current_user %>
+
       </div>
     </a>
 
     <!-- Profile picture and dropdown -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-        <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+        <div class="navbar-wagon-item">
+          <div class="dropdown">
+            <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li><%= link_to "Profile",  user_path(current_user) %></li>
+              <li><a href="#">Dashboard</a></li>
+              <li><%= link_to "logout",  destroy_user_session_path, method: :delete %></li>
+      <% else %>
+
+
+
+      <%end%>
+
         </ul>
       </div>
     </div>
