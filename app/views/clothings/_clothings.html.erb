@@ -1,0 +1,16 @@
+<div class=“container”>
+ <br>
+ <div class=“row”>
+   <% @clothings.each do |clothing| %>
+     <div class=“col-xs-12 col-sm-4">
+     <div class =“card”>
+       <img src= "https://unsplash.it/304/228" alt = "boy clothing" style=“width:304px;height:228px;“>
+       <div class=“card-description”>
+             <p>Description: <%= link_to clothing.description%> </p>
+       </div>
+
+   </div>
+ </div>
+ <% end %>
+ </div>
+</div>
