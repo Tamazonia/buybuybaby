@@ -3,6 +3,7 @@ class Clothing < ApplicationRecord
   validates :description, presence: :true
   validates :age, presence: :true
   validates :price, presence: :true
+  validates :gender, presence: :true
 
   has_one :purchase, dependent: :destroy
 
