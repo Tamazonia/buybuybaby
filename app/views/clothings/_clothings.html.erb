@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <% @clothings.each do |clothing| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class ="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= clothing_pic(clothing)%>');">>
+          <div class="card-description">
+              <h2>Description: <%= link_to clothing.description%> </h2>
+          </div>
+          <%=link_to "", clothing_path(clothing), class:"card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
