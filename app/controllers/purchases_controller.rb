@@ -1,7 +1,8 @@
 class PurchasesController < ApplicationController
 
   def new
-    @purchase = Purchase.new
+    @clothing = Clothing.find(params[:clothing_id])
+    @purchase = @clothing.build_purchase
   end
 
   def create
@@ -9,9 +10,11 @@ class PurchasesController < ApplicationController
     @purchase.user = current_user
 
     if @purchase.save
-      redirect_to clothing_purchase_path(@purchase)
+      #redirect_to clothing_purchase_path(@purchase.clothing_id, @purchase.id)
+      redirect_to clothings_path
     else
-      render :new
+      #render :new
+      puts "fazer render"
     end
 
   end
@@ -22,10 +25,17 @@ class PurchasesController < ApplicationController
     redirect_to clothings_path
   end
 
-  def show
-    @purchase = Purchase.find(purchase_params[:id])
-  end
+  # Como regra,
+  # se for para fazer UPDATE ou CREATE
+  # use o strong parameters, ex: purchase_params
 
+  # Se for para pegar parametros da URL,
+  # em qualquer outra acao do controller,
+  # usar params direto.
+
+  def show
+    @purchase = Purchase.find(params[:id])
+  end
 
   def purchase_params
     params.require(:purchase).permit(:clothing_id)
