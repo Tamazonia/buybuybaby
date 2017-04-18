@@ -1,6 +1,7 @@
 <%= simple_form_for [@user, @clothing] do |f| %>
   <%= f.error_notification %>
-  <%= f.input :price, placeholder: "Select your price" %>
+   <%= f.input :gender, collection: ["Boy", "Girl"], prompt: "Select your kid's gender" %>
+  <%= f.input :price, placeholder: "Select your price (R$)" %>
   <%= f.input :age, collection: ["0 to 6 months", "6 months to 1 year", "1 year to 3 years", "3 to 6 years", "6 to 10 years", "older than 10 years"], prompt: "Select your age" %>
   <%= f.input :description, placeholder: "Describe your item (condition, size)"  %>
   <%= f.submit "Add/update", class: "btn btn-primary" %>

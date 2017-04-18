@@ -43,6 +43,6 @@ class ClothingsController < ApplicationController
   end
 
   def clothing_params
-    params.require(:clothing).permit(:description, :age, :price)
+    params.require(:clothing).permit(:description, :age, :price, :gender)
   end
 end
