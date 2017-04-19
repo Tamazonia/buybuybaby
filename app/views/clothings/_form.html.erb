@@ -1,7 +1,7 @@
 <%= simple_form_for [@user, @clothing] do |f| %>
-  <%= f.input :gender, collection: ["Boy", "Girl"], prompt: "Select your kid's gender" %>
+  <%= f.input :gender, collection: ["Boy", "Girl"], prompt: "Is it a boy or a girl?" %>
   <%= f.input :price, placeholder: "Select your price (R$)" %>
-  <%= f.input :age, collection: ["Baby", "Toddler"], prompt: "Select your age" %>
+  <%= f.input :age, collection: ["Baby", "Toddler"], prompt: "Is it a baby or a toddler?" %>
   <%= f.input :description, placeholder: "Describe your items (condition, size)"  %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
