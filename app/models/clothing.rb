@@ -15,4 +15,14 @@ class Clothing < ApplicationRecord
   def customer # comprador da roupa
     return purchase.user
   end
+
+  def self.search(gender=nil, age=nil)
+    if gender
+      where(gender: gender)
+    elsif age
+      where(age: age)
+    else
+      all
+    end
+  end
 end
