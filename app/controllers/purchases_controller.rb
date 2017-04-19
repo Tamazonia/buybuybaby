@@ -11,10 +11,11 @@ class PurchasesController < ApplicationController
 
     if @purchase.save
       #redirect_to clothing_purchase_path(@purchase.clothing_id, @purchase.id)
-      redirect_to clothings_path
+      redirect_to clothings_path, notice: "Compra efetuada com sucesso!"
     else
-      #render :new
+      render :new
       puts "fazer render"
+      flash[:success] = "ERROR"
     end
 
   end

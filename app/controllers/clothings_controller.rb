@@ -1,5 +1,7 @@
 class ClothingsController < ApplicationController
   before_action :set_clothing, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new]
+
   def new
     @clothing = current_user.clothings.new
   end
@@ -19,6 +21,7 @@ class ClothingsController < ApplicationController
   end
 
   def show
+    @clothing = Clothing.find(params[:id])
   end
 
   def edit
