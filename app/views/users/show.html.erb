@@ -1,13 +1,12 @@
 <div class="container">
-  <h3>Great to have you here <%= @user.first_name %></h3>
+  <h3>Great to have you here, <%= @user.first_name %></h3>
   <br>
   <h4>Your Profile information:</h4>
 
-  <p><%= @user.first_name %></p>
-  <p><%= @user.last_name %></p>
+  <p><%= @user.first_name %> <%= @user.last_name %></p>
   <p><%= @user.address %></p>
-  <p><%= @user.phone %></p>
-  <p><%= @user.email %></p>
+  <p>&#9742 : <%= @user.phone %></p>
+  <p>&#x2709 : <%= @user.email %></p>
 
   <%= link_to "Edit",  edit_user_registration_path, class: "btn btn-primary" %>
 
