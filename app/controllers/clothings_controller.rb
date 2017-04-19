@@ -1,7 +1,5 @@
 class ClothingsController < ApplicationController
   before_action :set_clothing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new]
-
   def new
     @clothing = current_user.clothings.new
   end
@@ -10,6 +8,8 @@ class ClothingsController < ApplicationController
     @clothing = current_user.clothings.new(clothing_params)
 
     if @clothing.save
+      @clothing.bought = false
+      @clothing.save
       redirect_to user_path(current_user)
     else
       render 'new'
