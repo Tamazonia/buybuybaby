@@ -33,7 +33,13 @@ class ClothingsController < ApplicationController
   end
 
   def index
-    @clothings = Clothing.all
+    # if params[:gender] == "Boy"
+    #   @clothings = Clothing.where(gender: "Boy")
+    # elsif @clothings.gender == "Girl"
+    #   @clothings = Clothing.where(gender: "Girl")
+    # else
+      @clothings = Clothing.search(params[:gender], params[:age])
+    #end
   end
 
   private
