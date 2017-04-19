@@ -14,8 +14,6 @@ class PurchasesController < ApplicationController
       redirect_to clothings_path, notice: "Compra efetuada com sucesso!"
     else
       render :new
-      puts "fazer render"
-      flash[:success] = "ERROR"
     end
 
   end
