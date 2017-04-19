@@ -1,0 +1,24 @@
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h3>Credit Card Information</h3>
+
+
+   <%= simple_form_for([@clothing, @purchase]) do |f| %>
+   <%= f.input "Credit Card Name:", input_html: { value: "" } %>
+    <%= f.input "Credit Card Number:", input_html: { value: "" } %>
+    <%= f.input "CVV:", input_html: { value: "" } %>
+    <%= f.input "Expiry Month:", input_html: { value: "" } %>
+    <%= f.input "Expiry Year:", input_html: { value: "" } %>
+   <% end %>
+
+
+    </div>
+  </div>
+
+  <div class="text-center">
+  <%= simple_form_for([@clothing, @purchase]) do |f| %>
+    <%= f.input :clothing_id, as: :hidden, input_html: { value: @clothing.id} %>
+    <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
+  <% end %>
+  </div>

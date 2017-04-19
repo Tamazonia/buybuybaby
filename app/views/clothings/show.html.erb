@@ -1,1 +1,41 @@
-<%= render "shared/media_layout" %>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-xs-4 col-xs-offset-2">
+
+    <%= cl_image_tag @clothing.photo.url, width: 200, height: 300, crop: :fill %>
+
+    <h4><strong>Descricao:</strong> <%= @clothing.description%></h4>
+
+    </div>
+
+
+  <div class="col-xs-6">
+
+    <h4>Price: R$ <%= @clothing.price %></h4>
+
+    <%= simple_form_for(@clothing, method: :get, url: new_clothing_purchase_path(@clothing.id)) do |f| %>
+      <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
+    <%end%>
+
+
+  </div>
+
+    </div>
+
+
+</div>
+

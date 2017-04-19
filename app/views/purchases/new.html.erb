@@ -1,32 +1,31 @@
+
+<br>
+<br>
+
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1>Credit Card Information</h1>
 
 
-   <%= simple_form_for([@clothing, @purchase]) do |f| %>
-    <%= f.input "Item", input_html: { value: @clothing.description } %>
-    <%= f.input "Peco", input_html: { value: @clothing.price } %>
-    <br>
-    <%= f.input "Credit Card NUmber:", input_html: { value: "" } %>
-    <%= f.input "CVV:", input_html: { value: "" } %>
-    <%= f.input "Expiry Month:", input_html: { value: "" } %>
-    <%= f.input "Expiry Year:", input_html: { value: "" } %>
-   <% end %>
+<div class="row">
+
+   <div class="col-xs-3 col-xs-offset-2">
+
+  <h2>Preco: R$ <%= @clothing.price %></h2>
+  <%= cl_image_tag @clothing.photo.url, width: 300, height: 350, crop: :fill %>
+  <h4>Descricao: <%= @clothing.description %></h4>
+
+   </div>
 
 
-    </div>
-  </div>
-
-  <div class="text-center">
-  <%= simple_form_for([@clothing, @purchase]) do |f| %>
-    <%= f.input :clothing_id, as: :hidden, input_html: { value: @clothing.id} %>
-    <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
-  <% end %>
-  <%#= link_to "BUY", clothing_purchases_path(clothing_id: params[:clothing_id]),  class: 'btn btn-primary', method: :post %>
+  <div class="col-xs-7">
+    <%= render 'new' %>
   </div>
 
 </div>
+
+</div>
+
+<br>
+<br>
 
 
 
