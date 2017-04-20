@@ -8,9 +8,9 @@
       <h2 class="text-center">Price: R$ <%= @clothing.price %></h2>
       <%= cl_image_tag @clothing.photo.url, width: 300, height: 350, crop: :fill%>
       <h4><%= @clothing.description %></h4>
-      <center>
+      </center>
     </div>
-    <div class="col-xs-12 col-md-7 text-center">
+   <div class="col-xs-12 col-md-7 text-center">
       <%= render 'new' %>
     </div>
   </div>
