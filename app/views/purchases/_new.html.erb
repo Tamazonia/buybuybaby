@@ -19,8 +19,10 @@
   <div class="text-center">
   <%= simple_form_for([@clothing, @purchase]) do |f| %>
     <%= f.input :clothing_id, as: :hidden, input_html: { value: @clothing.id} %>
+    <%= f.input :user_id, as: :hidden, input_html: { value: @user_id} %>
+    <%= f.input :seller_id, as: :hidden, input_html: { value: @seller_id} %>
+    <%= f.input :delivery_price, as: :hidden, input_html: { value: @delivery_price} %>
+    <%= f.input :price, as: :hidden, input_html: { value: @clothing.price} %>
     <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
-    <% @clothing.bought = true %>
-    <% @clothing.save %>
   <% end %>
   </div>
