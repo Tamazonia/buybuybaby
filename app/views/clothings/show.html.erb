@@ -27,9 +27,17 @@
 
     <h4>Price: R$ <%= @clothing.price %></h4>
 
-    <%= simple_form_for(@clothing, method: :get, url: new_clothing_purchase_path(@clothing.id)) do |f| %>
-      <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
+
+    <% if @user == @seller %>
+      <button class="btn btn-lg btn-danger">Edit</button>
+      <%= link_to "Edit", edit_clothing_path, class: 'btn btn-lg btn-primary' %>
+    <% else %>
+      <%= simple_form_for(@clothing, method: :get, url: new_clothing_purchase_path(@clothing.id)) do |f| %>
+        <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
+      <%end%>
+
     <%end%>
+
 
 
   </div>
