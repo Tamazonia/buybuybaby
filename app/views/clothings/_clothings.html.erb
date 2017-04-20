@@ -11,7 +11,12 @@
               <h2><%= clothing.age%></h2>
               <p><%=clothing.description%> </p>
           </div>
-          <%=link_to "", clothing_path(clothing), class:"card-link" %>
+            <div class="ribbon"><span>R$<%= clothing.price%></span></div>
+            <% if current_user %>
+              <%=link_to "", clothing_path(clothing), class:"card-link" %>
+            <%else%>
+              <%= link_to "Login",  new_user_session_path, class:"card-link" %>
+            <%end%>
         </div>
       </div>
     <% end %>
