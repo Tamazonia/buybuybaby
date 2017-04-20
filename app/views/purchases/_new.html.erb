@@ -20,5 +20,7 @@
   <%= simple_form_for([@clothing, @purchase]) do |f| %>
     <%= f.input :clothing_id, as: :hidden, input_html: { value: @clothing.id} %>
     <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
+    <% @clothing.bought = true %>
+    <% @clothing.save %>
   <% end %>
   </div>
