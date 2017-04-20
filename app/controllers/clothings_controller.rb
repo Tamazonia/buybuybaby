@@ -10,6 +10,8 @@ class ClothingsController < ApplicationController
     @clothing = current_user.clothings.new(clothing_params)
 
     if @clothing.save
+      @clothing.bought = false
+      @clothing.save
       redirect_to user_path(current_user)
     else
       render 'new'
