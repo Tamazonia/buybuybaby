@@ -3,21 +3,15 @@
     <div class="row">
       <div class="col-xs-12 col-s-6">
         <%= cl_image_tag @clothing.photo.url, width: 200, height: 300, crop: :fill %>
-        <h4><%= @clothing.description%>, (R$ <%= @clothing.price %>)</h4>
+        <h4><%= @clothing.description%>, (R$ <%= @clothing.price %>) </h4>
         <% if @user == @seller %>
-      <button class="btn btn-lg btn-danger">Edit</button>
-      <%= link_to "Edit", edit_clothing_path, class: 'btn btn-lg btn-primary' %>
-    <% else %>
-      <%= simple_form_for(@clothing, method: :get, url: new_clothing_purchase_path(@clothing.id)) do |f| %>
-        <%= f.submit "CHECK OUT", class: 'btn btn-lg btn-danger ' %>
-      <%end%>
-
-    <%end%>
+          <%= link_to "Edit", edit_clothing_path, class: 'btn btn-lg btn-primary' %>
+        <% else %>
+          <%= link_to "Check out", new_clothing_purchase_path(@clothing.id), class: 'btn btn-lg btn-primary' %>
+        <%end%>
       </div>
     </div>
-
   </div>
-          <br>
-
+  <br>
 </center>
 

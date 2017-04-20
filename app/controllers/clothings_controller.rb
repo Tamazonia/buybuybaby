@@ -24,7 +24,7 @@ class ClothingsController < ApplicationController
 
   def show
     @clothing = Clothing.find(params[:id])
-    @seller = @clothing.user_id
+    @seller = @clothing.user
     @user = current_user
   end
 
