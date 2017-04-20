@@ -3,26 +3,21 @@ class PurchasesController < ApplicationController
   def new
     @clothing = Clothing.find(params[:clothing_id])
     @purchase = @clothing.build_purchase
+    @purchase.user = current_user
+    @purchase.seller_id = @clothing.user_id
 
-    buyer = current_user
-    buyer_long = buyer.longitude
-    buyer_lat = buyer.latitude
-
-    seller = @clothing.user
-    seller_long = seller.longitude
-    seller_lat = seller.latitude
-
-    distance = Geocoder::Calculations.distance_between([seller_long, seller_lat], [buyer_long, buyer_lat], :units => :km)
-
-    @delivery_price = distance_price(distance)
-
+    @delivery_price = @purchase.distance_price
   end
 
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.user = current_user
 
+    clothing = @purchase.clothing
+
     if @purchase.save
+      clothing.bought = true
+      clothing.save
       #redirect_to clothing_purchase_path(@purchase.clothing_id, @purchase.id)
       redirect_to clothings_path, notice: "Compra efetuada com sucesso!"
     else
@@ -51,7 +46,7 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:clothing_id)
+    params.require(:purchase).permit(:clothing_id, :user_id, :seller_id, :price, :delivery_price, :price)
   end
 
 end
