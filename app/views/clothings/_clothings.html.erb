@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
 
-  <% @clothings = @clothings.select { |clothing| clothing.bought == false } %>
+  <% clothings = @clothings.select { |clothing| clothing.up_for_sale? } %>
 
-    <% @clothings.each do |clothing| %>
+    <% clothings.each do |clothing| %>
       <div class="col-xs-12 col-sm-4">
         <div class ="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= clothing_pic(clothing)%>');">
           <div class="card-category"><h3><%=clothing.gender%></h3></div>

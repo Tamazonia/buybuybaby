@@ -1,0 +1,22 @@
+
+<div class="container">
+
+<% clothings.each do |clothing| %>
+  <div style="display: flex">
+    <div>
+    <%= link_to(clothing_path(clothing)) do %>
+      <%= cl_image_tag clothing.photo.url, width: 100, height: 100, crop: :fill %>
+    <% end %>
+
+    </div>
+    <div style="padding-left: 10px">
+    <p>Price: R$ <%=clothing.price%> </p>
+    <p><%=clothing.description%> </p>
+    <p>Date: <%=clothing.created_at%> </p>
+    </div>
+  </div>
+  <br>
+  <br>
+<% end %>
+
+</div>

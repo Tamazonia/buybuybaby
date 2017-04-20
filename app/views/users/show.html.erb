@@ -1,4 +1,6 @@
-<div class="container">
+<br>
+<br>
+<div class="container text-center" style="background-color: grey">
   <h3>Great to have you here, <%= @user.first_name %></h3>
   <br>
   <h4>Your Profile information:</h4>
@@ -12,8 +14,21 @@
 
   <br>
 
+  </div>
+
+<br>
+<br>
+
+<div class="container">
 
   <h4>What you are selling:</h4>
-  <%= render partial: "clothings/clothings" %>
+  <br>
+  <br>
+  <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } }  %>
+  <br>
+  <br>
+  <h4>Sold itens:</h4>
+  <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
 
 </div>
+
