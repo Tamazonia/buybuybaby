@@ -1,15 +1,22 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h3>Credit Card Information</h3>
+      <h4>Credit Card Information</h4>
+
+  <i style="font-size:22px" class="fa">&#xf1f0; </i>
+  <i style="font-size:22px" class="fa">&#xf1f3;</i>
+  <i style="font-size:22px" class="fa">&#xf1f1;</i>
+  <i style="font-size:22px" class="fa">&#xf1f4;</i>
+
 
 
    <%= simple_form_for([@clothing, @purchase]) do |f| %>
-   <%= f.input "Credit Card Name:", input_html: { value: "" } %>
-    <%= f.input "Credit Card Number:", input_html: { value: "" } %>
-    <%= f.input "CVV:", input_html: { value: "" } %>
-    <%= f.input "Expiry Month:", input_html: { value: "" } %>
-    <%= f.input "Expiry Year:", input_html: { value: "" } %>
+   <%= f.input "Name on Card:", input_html: { value: "" } %>
+    <%= f.input "Card Number:", input_html: { value: "" } %>
+    <%= f.input "Card CVV:", input_html: { value: "" } %>
+    <p>Expiration Date:</p>
+    <%= f.input :month, collection: 01..12%>
+    <%= f.input :year, collection: 2017..2037%>
    <% end %>
 
 
@@ -23,6 +30,6 @@
     <%= f.input :seller_id, as: :hidden, input_html: { value: @seller_id} %>
     <%= f.input :delivery_price, as: :hidden, input_html: { value: @delivery_price} %>
     <%= f.input :price, as: :hidden, input_html: { value: @clothing.price} %>
-    <%= f.submit "BUY", class: 'btn btn-lg btn-danger ' %>
+    <%= f.submit "Place your order", class: 'btn btn-lg btn-success ' %>
   <% end %>
   </div>

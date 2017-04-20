@@ -2,7 +2,7 @@
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
 
-    <img src="http://res.cloudinary.com/aearamos/image/upload/v1492616218/buybuybabylogo.png" height="50px" width="50px" />
+   <h4> <img src="http://res.cloudinary.com/aearamos/image/upload/v1492649290/unicornbuybuy_vjq0mc.png" height="50px" width="50px" /> BuyBuyBaby</h4>
 
   </a>
 
@@ -36,44 +36,49 @@
     <!-- Notification link-->
     <a href="" class="navbar-wagon-item navbar-wagon-link">
       <div class="badge-container">
-      <% if current_user %>
-
+        <% if current_user %>
       </div>
     </a>
-
     <!-- Profile picture and dropdown -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-          <%= image_tag avatar_url, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', 'data-toggle' => 'dropdown' %>
+            <%= image_tag avatar_url, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', 'data-toggle' => 'dropdown' %>
             <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li><%= link_to "Profile",  user_path(current_user) %></li>
-              <li><a href="#">Dashboard</a></li>
-              <li><%= link_to "logout",  destroy_user_session_path, method: :delete %></li>
-      <% else %>
-
-
-
-      <%end%>
-
-        </ul>
-      </div>
+                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                  <li><%= link_to "Profile",  user_path(current_user) %></li>
+                  <li><%= link_to "logout",  destroy_user_session_path, method: :delete %></li>
+            <% else %>
+          <%end%>
+              </ul>
+          </div>
     </div>
 
-
     <!-- Button (call-to-action) -->
-    <%= link_to "Sell!", new_clothing_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <% if current_user %>
+         <%= link_to "Sell!", new_clothing_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <%else%>
+          <%= link_to "Sell!",  new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn"%>
+      <%end%>
+
+
   </div>
 
   <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Sell</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">Logout</a></li>
-      </ul>
+  <% if current_user %>
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to "Sell", new_clothing_path%></li>
+          <li><%= link_to "All", clothings_path%></li>
+          <li><%= link_to "Baby", clothings_path(age: "Baby")%></li>
+          <li><%= link_to "Toddler", clothings_path(age: "Toddler")%></li>
+          <li><%= link_to "Boy", clothings_path(gender: "Boy")%></li>
+          <li><%= link_to "Girl", clothings_path(gender: "Girl")%></li>
+          <li><%= link_to "Logout",  destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  <%end%>
 </div>
+
