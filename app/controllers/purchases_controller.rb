@@ -3,6 +3,19 @@ class PurchasesController < ApplicationController
   def new
     @clothing = Clothing.find(params[:clothing_id])
     @purchase = @clothing.build_purchase
+
+    buyer = current_user
+    buyer_long = buyer.longitude
+    buyer_lat = buyer.latitude
+
+    seller = @clothing.user
+    seller_long = seller.longitude
+    seller_lat = seller.latitude
+
+    distance = Geocoder::Calculations.distance_between([seller_long, seller_lat], [buyer_long, buyer_lat], :units => :km)
+
+    @delivery_price = distance_price(distance)
+
   end
 
   def create
@@ -36,6 +49,7 @@ class PurchasesController < ApplicationController
 
   def show
     @purchase = Purchase.find(params[:id])
+
   end
 
   def purchase_params

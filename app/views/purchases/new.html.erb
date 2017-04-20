@@ -10,6 +10,7 @@
    <div class="col-xs-3 col-xs-offset-2">
 
   <h2>Preco: R$ <%= @clothing.price %></h2>
+  <h4>Delivery Price: <%= @delivery.price %> </h4>
   <%= cl_image_tag @clothing.photo.url, width: 300, height: 350, crop: :fill %>
   <h4>Descricao: <%= @clothing.description %></h4>
 
