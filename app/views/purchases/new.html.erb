@@ -3,7 +3,8 @@
 <br>
 <div class="container">
   <div class="row">
-     <div class="col-md-3 col-md-offset-2 col-xs-12">
+
+    <div class="col-md-3 col-md-offset-2 col-xs-12">
       <center>
       <h2 class="text-center">Price: R$ <%= @clothing.price %></h2>
       <h4 class="text-center">Delivery Price: R$ <%= @delivery_price %></h4>
@@ -11,9 +12,11 @@
       <h4><%= @clothing.description %></h4>
       </center>
     </div>
+
    <div class="col-xs-12 col-md-7 text-center">
       <%= render 'new' %>
     </div>
+
   </div>
 </div>
 <br>

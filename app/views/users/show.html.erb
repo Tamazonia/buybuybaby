@@ -1,3 +1,5 @@
+<div class="container">
+  <h3>Great to have you here, <%= @user.first_name %>!</h3>
 <br>
 <br>
 <div class="container text-center" style="background-color: grey">
@@ -39,6 +41,8 @@
   <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
 
 
+  <h4>Your sales:</h4>
+  <%= render partial: "clothings/clothings" %>
 </div>
 
 
@@ -66,3 +70,5 @@
   <br>
 <% end %>
 </div>
+
+
