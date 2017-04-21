@@ -1,6 +1,8 @@
 class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :clothing
+  belongs_to :seller, class_name: "User", foreign_key: "seller_id"
+
 
   attr_accessor :month, :year
   after_create :send_bought_email
@@ -19,9 +21,9 @@ class Purchase < ApplicationRecord
   end
 
 
-  # def send_bought_email
-  #   User.Mailer.bought(self).deliver_now
-  # end
+  def send_bought_email
+    UserMailer.bought(seller).deliver_now
+  end
 
 
 

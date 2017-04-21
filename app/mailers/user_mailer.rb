@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.bought.subject
   #
-  def bought
+  def bought(user)
     # @greeting = "Congrats! One of your items has just been sold on BuyBuyBaby. Check it out: https://buybuybaby.herokuapp.com/ "
     @user = user
     mail(to: @user.email, subject: "Items sold on BuyBuyBaby")
