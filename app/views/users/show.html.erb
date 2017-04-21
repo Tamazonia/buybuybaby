@@ -26,7 +26,7 @@
 
 <div class="container">
 
-
+  <h4>For sale:</h4>
   <br>
   <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } }  %>
   <br>
@@ -37,8 +37,7 @@
 
 
 
-  <h4>Your sales:</h4>
-  <%= render partial: "clothings/clothings" %>
+
 </div>
 
 
