@@ -1,14 +1,19 @@
-<br>
-<br>
-<div class="container text-center" style="background-color: grey">
+<div class="container">
   <h3>Great to have you here, <%= @user.first_name %></h3>
-  <br>
-  <h4>Your Profile information:</h4>
+  <h4>Your information:</h4>
 
-  <p><%= @user.first_name %> <%= @user.last_name %></p>
-  <p><%= @user.address %></p>
-  <p>&#9742 : <%= @user.phone %></p>
-  <p>&#x2709 : <%= @user.email %></p>
+  <i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%= @user.last_name %>
+  <br>
+  <br>
+  <i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %>
+  <br>
+  <br>
+  <i class="fa fa-phone-square" aria-hidden="true"></i>: <%= @user.phone %>
+  <br>
+  <br>
+  <i class="fa fa-envelope"></i>: <%= @user.email %>
+  <br>
+  <br>
 
   <%= link_to "Edit",  edit_user_registration_path, class: "btn btn-primary" %>
 
@@ -21,7 +26,7 @@
 
 <div class="container">
 
-  <h4>What you are selling:</h4>
+
   <br>
   <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } }  %>
   <br>
@@ -30,7 +35,15 @@
   <br>
   <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
 
+
+
+  <h4>Your sales:</h4>
+  <%= render partial: "clothings/clothings" %>
+</div>
+
+
 <div class="container" style="border:solid">
+
 <br>
 <h4>Bougth itens:</h4>
 <br>
@@ -59,8 +72,6 @@
   <br>
 <% end %>
 </div>
-<br>
-<br>
-</div>
+
 
 

@@ -1,6 +1,11 @@
 
 <div class="container">
-  <h1> All clothings <%= link_to "Add a new clothing", new_clothing_path, class: 'btn btn-primary' %> </h1>
+  <h1> Clothings for your kiddy </h1>
+  <br>
+  <%= link_to "Sell your cloths", new_clothing_path, class: 'btn btn-danger' %>
+  <br>
+  <br>
   <%= render partial: 'clothings' %>
 
 </div>
+
