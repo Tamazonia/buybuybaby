@@ -3,6 +3,7 @@ class Purchase < ApplicationRecord
   belongs_to :clothing
 
   attr_accessor :month, :year
+  after_create :send_bought_email
 
   def distance_price
     distance = Geocoder::Calculations.distance_between([clothing.user.longitude, clothing.user.latitude],
@@ -16,6 +17,14 @@ class Purchase < ApplicationRecord
       return 50
     end
   end
+
+
+  # def send_bought_email
+  #   User.Mailer.bought(self).deliver_now
+  # end
+
+
+
 end
 
 

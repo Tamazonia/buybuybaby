@@ -20,6 +20,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'omniauth-facebook'
 gem "geocoder"
+gem "letter_opener", group: :development
 
 group :development, :test do
   gem 'binding_of_caller'
