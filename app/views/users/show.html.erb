@@ -1,62 +1,113 @@
 <div class="container">
-  <h3>Great to have you here, <%= @user.first_name %>!</h3>
-  <h4>Your information:</h4>
-  <i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%= @user.last_name %> //
 
-  <i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %> //
+<h3>Great to have you here, <%= @user.first_name %>!</h3>
 
-  <i class="fa fa-phone-square" aria-hidden="true"></i>: <%= @user.phone %> //
+<h4>Your information:</h4>
 
-  <i class="fa fa-envelope"></i>: <%= @user.email %>
-  <br>
-  <br>
-  <%= link_to "Edit",  edit_user_registration_path, class: "btn btn-primary" %>
-  <br>
+<i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%=
+
+@user.last_name %> //
+
+<i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %> //
+
+<i class="fa fa-phone-square" aria-hidden="true"></i>: <%= @user.phone %> //
+
+<i class="fa fa-envelope"></i>: <%= @user.email %>
+
+<br>
+
+<br>
+
+<%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary" %>
+
+<br>
+
 </div>
-<br>
+
 <br>
 
+<br>
 
 <div class="container">
-  <div class="tabs">
-    <a class="tab active" data-target="#bio">
-      <h4>Itens you are selling:</h4>
-    </a>
-      <a class="tab" data-target="#projects">
-        <h3>Itens you sold:</h3>
-      </a>
-      <a class="tab" data-target="#contact">
-        <h3>Itens you bought:</h3>
-      </a>
-    </div>
+
+<div class="tabs">
+
+<a class="tab active" data-target="#bio">
+
+<h4>Itens you are selling:</h4>
+
+</a>
+
+<a class="tab" data-target="#projects">
+
+<h3>Itens you sold:</h3>
+
+</a>
+
+<a class="tab" data-target="#contact">
+
+<h3>Itens you bought:</h3>
+
+</a>
+
+</div>
+
 </div>
 
 <div class="container text-center">
-      <div class="tab-content" id="bio">
-      <%= render partial: "clothings/clothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } } %>
-      </div>
-      <div class="tab-content" id="projects">
-       <%= render partial: "clothings/clothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
-       </div>
-      <div class="tab-content" id="contact">
-        <div class="container">
-          <div class="row">
-            <% pur = Purchase.all %>
-            <% purchases = pur.select { |purchase| purchase.user_id == current_user.id } %>
-            <% purchases.each do |purchase| %>
-            <%purchased_clothing = Clothing.find(purchase.clothing_id)%>
-              <div class="col-xs-12 col-sm-4">
-                <div class ="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= purchase_pic(purchased_clothing)%>');">
-                  <div class="ribbon" id="bought">
-                    <span>BOUGHT</span>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-      </div>
-    </div>
+
+<div class="tab-content" id="bio">
+
+<%= render partial: "clothings/clothings", locals: {clothings: @clothings.select {
+
+|clothing| clothing.up_for_sale? } } %>
+
 </div>
 
+<div class="tab-content" id="projects">
 
+<%= render partial: "clothings/clothings", locals: {clothings: @clothings.select {
 
+|clothing| clothing.bought? } } %>
+
+</div>
+
+<div class="tab-content" id="contact">
+
+<div class="container">
+
+<div class="row">
+
+<% pur = Purchase.all %>
+
+<% purchases = pur.select { |purchase| purchase.user_id == current_user.id } %>
+
+<% purchases.each do |purchase| %>
+
+<%purchased_clothing = Clothing.find(purchase.clothing_id)%>
+
+<div class="col-xs-12 col-sm-4">
+
+<div class ="card" style="background-image: linear-gradient(rgba(0,0,0,0.3),
+
+rgba(0,0,0,0.2)), url('<%= purchase_pic(purchased_clothing)%>');">
+
+<div class="ribbon" id="bought">
+
+<span>BOUGHT</span>
+
+</div>
+
+</div>
+
+</div>
+
+<% end %>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
