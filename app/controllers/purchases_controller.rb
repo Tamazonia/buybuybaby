@@ -10,8 +10,11 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    @clothing = Clothing.find(params[:clothing_id])
     @purchase = Purchase.new(purchase_params)
     @purchase.user = current_user
+    @purchase.seller = @clothing.user
+    @purchase.price = @clothing.price
 
     clothing = @purchase.clothing
 
