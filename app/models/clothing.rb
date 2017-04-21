@@ -25,4 +25,8 @@ class Clothing < ApplicationRecord
       all
     end
   end
+
+  def up_for_sale?
+    !bought
+  end
 end
