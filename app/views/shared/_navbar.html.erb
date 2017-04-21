@@ -2,7 +2,7 @@
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
 
-   <h4> <img src="http://res.cloudinary.com/aearamos/image/upload/v1492649290/unicornbuybuy_vjq0mc.png" height="50px" width="50px" /> BuyBuyBaby</h4>
+   <h4> <img src="http://res.cloudinary.com/aearamos/image/upload/v1492649290/unicornbuybuy_vjq0mc.png" height="50px" width="50px" style="text-decoration:none" /> BuyBuyBaby</h4>
 
   </a>
 
@@ -46,7 +46,7 @@
             <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
                 <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                   <li><%= link_to "Profile",  user_path(current_user) %></li>
-                  <li><%= link_to "logout",  destroy_user_session_path, method: :delete %></li>
+                  <li><%= link_to "Logout",  destroy_user_session_path, method: :delete %></li>
             <% else %>
           <%end%>
               </ul>
