@@ -1,11 +1,11 @@
 
 <div class="container">
-  <h1> Clothings for your kiddy </h1>
+  <h1> Clothings for your kid</h1>
   <br>
-  <%= link_to "Sell your cloths", new_clothing_path, class: 'btn btn-danger' %>
+  <%= link_to "Sell your clothes", new_clothing_path, class: 'btn btn-danger' %>
   <br>
   <br>
-  <%= render partial: 'clothings' %>
+  <%= render partial: 'clothings', locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } } %>
 
 </div>
 
