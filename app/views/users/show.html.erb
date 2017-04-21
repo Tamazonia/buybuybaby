@@ -1,13 +1,12 @@
 <div class="container">
   <h3>Great to have you here, <%= @user.first_name %>!</h3>
   <h4>Your information:</h4>
-  <i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%= @user.last_name %>//
+  <i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%= @user.last_name %> //
 
-  <i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %>//
+  <i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %> //
 
-  <i class="fa fa-phone-square" aria-hidden="true"></i>: <%= @user.phone %>
-  <br>
-  <br>
+  <i class="fa fa-phone-square" aria-hidden="true"></i>: <%= @user.phone %> //
+
   <i class="fa fa-envelope"></i>: <%= @user.email %>
   <br>
   <br>
@@ -16,6 +15,7 @@
 </div>
 <br>
 <br>
+
 <div class="container">
 <h4>Itens you are selling:</h4>
   <%= render partial: "clothings/clothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } } %>
@@ -25,33 +25,25 @@
   <%= render partial: "clothings/clothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
   <br>
   <br>
-</div>
-
-
-
+<h4>Itens you bought:</h4>
 <div class="container">
-<br>
-<h4>Bougth itens:</h4>
-<br>
-<% @purchases.each do |purchase| %>
-  <div style="display: flex">
+  <div class="row">
+  <% pur = Purchase.all %>
+  <% purchases = pur.select { |purchase| purchase.user_id == current_user.id } %>
+    <% purchases.each do |purchase| %>
+    <%purchased_clothing = Clothing.find(purchase.clothing_id)%>
+      <div class="col-xs-12 col-sm-4">
+        <div class ="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= purchase_pic(purchased_clothing)%>');">
+            <div class="ribbon" id="bought">
+              <span>BOUGHT</span>
+          </div>
 
-  <%clothing_purchased = Clothing.find(purchase.clothing_id)%>
-    <div>
-    <%= link_to(clothing_path(clothing_purchased)) do %>
-      <%= cl_image_tag clothing_purchased.photo.url, width: 100, height: 100, crop: :fill %>
+        </div>
+      </div>
     <% end %>
-
-    </div>
-    <div style="padding-left: 10px">
-    <p>Price: R$ <%=clothing_purchased.price%> </p>
-    <p><%=clothing_purchased.description%> </p>
-    <p>Data da compra: <%=purchase.created_at%> </p>
-    </div>
   </div>
-  <br>
-  <br>
-<% end %>
 </div>
+</div>
+
 
 
