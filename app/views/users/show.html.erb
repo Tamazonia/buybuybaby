@@ -1,49 +1,32 @@
 <div class="container">
   <h3>Great to have you here, <%= @user.first_name %>!</h3>
-<br>
-<br>
-<div class="container text-center" style="background-color: grey">
-  <h3>Great to have you here, <%= @user.first_name %></h3>
-  <br>
-  <h4>Your Profile information:</h4>
+  <h4>Your information:</h4>
+  <i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%= @user.last_name %>//
 
-  <i class="fa fa-user" aria-hidden="true"></i>: <%= @user.first_name %> <%= @user.last_name %>
-  <br>
-  <br>
-  <i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %>
-  <br>
-  <br>
+  <i class="fa fa-map-marker" aria-hidden="true"></i>: <%= @user.address %>//
+
   <i class="fa fa-phone-square" aria-hidden="true"></i>: <%= @user.phone %>
   <br>
   <br>
   <i class="fa fa-envelope"></i>: <%= @user.email %>
   <br>
   <br>
-
   <%= link_to "Edit",  edit_user_registration_path, class: "btn btn-primary" %>
-
   <br>
-
-  </div>
-
-<br>
-<br>
-
-<div class="container">
-
-
-  <br>
-  <br>
-  <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } }  %>
-  <br>
-  <br>
-  <h4>Sold itens:</h4>
-  <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
-
-
-  <h4>Your sales:</h4>
-  <%= render partial: "clothings/clothings" %>
 </div>
+<br>
+<br>
+<div class="container">
+<h4>Itens you are selling:</h4>
+  <%= render partial: "clothings/clothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } } %>
+  <br>
+  <br>
+<h4>Itens you sold:</h4>
+  <%= render partial: "clothings/clothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
+  <br>
+  <br>
+</div>
+
 
 
 <div class="container">
