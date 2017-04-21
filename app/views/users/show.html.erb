@@ -23,21 +23,23 @@
 
   <h4>What you are selling:</h4>
   <br>
-  <br>
   <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } }  %>
   <br>
   <br>
-  <h4>Sold itens:</h4>
+  <h4>Sold items:</h4>
+  <br>
   <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
 
-</div>
-
-
-<div class="container">
+<div class="container" style="border:solid">
 <br>
 <h4>Bougth itens:</h4>
 <br>
-<% @purchases.each do |purchase| %>
+<br>
+
+<% pur = Purchase.all %>
+<% purchases = pur.select { |purchase| purchase.user_id == current_user.id } %>
+
+<% purchases.each do |purchase| %>
   <div style="display: flex">
 
   <%clothing_purchased = Clothing.find(purchase.clothing_id)%>
@@ -57,3 +59,8 @@
   <br>
 <% end %>
 </div>
+<br>
+<br>
+</div>
+
+
