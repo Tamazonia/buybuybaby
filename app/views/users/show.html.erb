@@ -1,5 +1,9 @@
 <div class="container">
   <h3>Great to have you here, <%= @user.first_name %>!</h3>
+<br>
+<br>
+<div class="container text-center" style="background-color: grey">
+  <h3>Great to have you here, <%= @user.first_name %></h3>
   <br>
   <h4>Your Profile information:</h4>
 
@@ -20,9 +24,51 @@
 
   <br>
 
+  </div>
+
+<br>
+<br>
+
+<div class="container">
+
+
+  <br>
+  <br>
+  <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.up_for_sale? } }  %>
+  <br>
+  <br>
+  <h4>Sold itens:</h4>
+  <%= render partial: "clothings/soldclothings", locals: {clothings: @clothings.select { |clothing| clothing.bought? } } %>
+
 
   <h4>Your sales:</h4>
   <%= render partial: "clothings/clothings" %>
+</div>
+
+
+<div class="container">
+<br>
+<h4>Bougth itens:</h4>
+<br>
+<% @purchases.each do |purchase| %>
+  <div style="display: flex">
+
+  <%clothing_purchased = Clothing.find(purchase.clothing_id)%>
+    <div>
+    <%= link_to(clothing_path(clothing_purchased)) do %>
+      <%= cl_image_tag clothing_purchased.photo.url, width: 100, height: 100, crop: :fill %>
+    <% end %>
+
+    </div>
+    <div style="padding-left: 10px">
+    <p>Price: R$ <%=clothing_purchased.price%> </p>
+    <p><%=clothing_purchased.description%> </p>
+    <p>Data da compra: <%=purchase.created_at%> </p>
+    </div>
+  </div>
+  <br>
+  <br>
+<% end %>
 </div>
 
 
