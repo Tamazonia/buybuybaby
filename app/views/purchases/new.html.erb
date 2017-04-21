@@ -7,6 +7,7 @@
     <div class="col-md-3 col-md-offset-2 col-xs-12">
       <center>
       <h2 class="text-center">Price: R$ <%= @clothing.price %></h2>
+      <h4 class="text-center">Delivery Price: R$ <%= @delivery_price %></h4>
       <%= cl_image_tag @clothing.photo.url, width: 300, height: 350, crop: :fill%>
       <h4><%= @clothing.description %></h4>
       </center>
